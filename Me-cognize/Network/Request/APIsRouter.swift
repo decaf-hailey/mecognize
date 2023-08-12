@@ -28,10 +28,12 @@ enum APIsRouter: URLRequestConvertible, NLRestApis {
         return ["key": AppCredential.shared.apiKey]
     }
     
-    var bodyParameter: Parameters? {
+    var bodyParameter: Encodable? {
         switch self {
         case .analyzeSentiment(let document):
-            return ["document": document, "encodingType": EncodingType.UTF16.rawValue]
+//            return ["document": document, "encodingType": EncodingType.UTF16.rawValue]
+            return RequestAnalyze(document: document, encodingType: EncodingType.UTF16)
+            
         }
     }
     

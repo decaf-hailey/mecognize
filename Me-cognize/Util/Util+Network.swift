@@ -15,11 +15,13 @@ extension Util {
             static func encodeBody(bodyParam: Parameters? = nil) throws -> Data? {
                 var bodyData: Data? = nil
                 if let _body = bodyParam {
-                    if let data = try? JSONSerialization.data(withJSONObject: _body, options: []) {
+                    do {
+                        let data = try? JSONSerialization.data(withJSONObject: _body, options: [])
                         bodyData = data
-                    } else {
-                        Util.Print.PrintLight(printType: .SystemError(" URL: \(String(describing: bodyParam)) == encodeBody JSONSerialization 에러 == "))
+                    } catch (let err){
+                        Util.Print.PrintLight(printType: .systemError(" URL: \(String(describing: bodyParam)) == encodeBody JSONSerialization 에러 == \(err)"))
                         throw MeError.jsonParsingError
+
                     }
                 }
                 
@@ -47,7 +49,7 @@ extension Util {
                     let result = String(data: myData, encoding: .utf8)
                     return result
                 } catch (let error) {
-                    Util.Print.PrintLight(printType: .SystemError(error))
+                    Util.Print.PrintLight(printType: .systemError(error))
                     return nil
                 }
             }
@@ -59,10 +61,20 @@ extension Util {
                     let result = try encoder.encode(data)
                     return result
                 } catch (let error) {
-                    Util.Print.PrintLight(printType: .SystemError(error))
+                    Util.Print.PrintLight(printType: .systemError(error))
                     return nil
                 }
             }
         }
+    }
+}
+
+
+extension Encodable {
+    func toDictionary() -> [String: Any] {
+        guard let data = try? JSONEncoder().encode(self),
+              let jsonData = try? JSONSerialization.jsonObject(with: data),
+              let dictionaryData = jsonData as? [String: Any] else { return [:] }
+        return dictionaryData
     }
 }

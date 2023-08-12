@@ -8,10 +8,9 @@ target 'Me-cognize' do
   # Pods for Me-cognize
 
 	pod 'Alamofire'
-	pod 'ReachabilitySwift'
 	pod 'AppAuth'
 	pod 'GoogleSignIn'
 	pod 'GoogleSignInSwiftSupport'
-
+        pod 'RealmSwift', '~>10'
 
 end

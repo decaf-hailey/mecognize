@@ -13,7 +13,7 @@ import Alamofire
 protocol NLRestApis {
     var method: HTTPMethod { get }
     var path: String { get }
-    var bodyParameter: Parameters? { get }
+    var bodyParameter: Encodable? { get }
 //    var interceptor: RequestInterceptor { get }
 }
 
@@ -32,7 +32,7 @@ extension NLRestApis {
     
     func makeRequest() throws -> URLRequest {
         guard let _url = URL(string: baseURL+path) else {
-            Util.Print.PrintLight(printType: .SystemError("URL이 잘못되었습니다. \(path)"))
+            Util.Print.PrintLight(printType: .systemError("URL이 잘못되었습니다. \(path)"))
             throw MeError.custom(reason: "url이 잘못되었음")
         }
         
@@ -45,15 +45,16 @@ extension NLRestApis {
         urlRequest.headers.add(.authorization(bearerToken: token))
         urlRequest.headers.add(.contentType(ContentType.json.rawValue))
         
-        let _body = bodyParameter
-        if _body != nil {
-                
-                let data = Document(content: "I am so happy", language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
-                let final = RequestAnalyze(document: data, encodingType: .UTF16)
-                urlRequest.httpBody = Util.Network.Request.jsonData(data: final)
-           
+    
+        if let _body = bodyParameter {
+            do {
+                urlRequest.httpBody = try Util.Network.Request.encodeBody(bodyParam: _body.toDictionary())
+//                let en = URLEncodedFormParameterEncoder.default.encode(_body, into: urlRequest)
+            } catch {
+                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+            }
         }
-        
+    
         return urlRequest
     }
 }

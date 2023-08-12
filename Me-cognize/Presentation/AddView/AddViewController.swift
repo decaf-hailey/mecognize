@@ -7,8 +7,137 @@
 
 import UIKit
 
+class AddViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var keyboardBottom: NSLayoutConstraint!
+    var sendingData: String = ""
+    
+    var resultData: Sentiment?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        preventDoubleTap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc func keyboardWillShow(_ sender: NSNotification) {
+        let info = sender.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        let f = UIScreen.main.bounds.size.height - keyboardSize
+        let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let safeareaBottom = Util.UI.getKeyRootView()?.view.safeAreaInsets.bottom ?? 0
+        
+        UIView.animate(withDuration: duration) { [weak self] in
+            guard let self = self else { return }
+            
+            self.keyboardBottom.constant = keyboardSize - safeareaBottom
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: NSNotification) {
+        let info = sender.userInfo!
+        let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        UIView.animate(withDuration: duration) { [weak self] in
+            guard let self = self else { return }
+            
+            self.keyboardBottom.constant = 0
+            self.view.layoutSubviews()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        guard let resultData = resultData else {
+            return
+        }
+        let history = History(magnitude: resultData.magnitude, score: resultData.score, text: sendingData)
 
-class AddViewController : UIViewController {
+        LocalData.saveHistory(history) { [weak self] in
+            self?.showAlert("Saved!")
+        } onFail: { [weak self] in
+            self?.showAlert("Error -------- \n \(resultData)")
+        }
+        
+        
+    }
+    
+    @IBAction func sendAction(_ sender: Any) {
+        let data = Document(content: sendingData, language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
+        NLRequest.analyzeSentiment(document: data) { [weak self] response in
+            Util.Print.PrintLight(printType: .checkValue(response))
+            self?.resultData = response.documentSentiment
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        } failure: { error in
+            Util.Print.PrintLight(printType: .responseError(error))
+        }
+    }
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        switch indexPath.row {
+        case 0:
+            let cell : AddTypingCell = tableView.dequeueReusableCell(withIdentifier: AddTypingCell.reuseIdentifier, for: indexPath) as! AddTypingCell
+            cell.textChanged = { [weak self] text in
+                print(text)
+                self?.sendingData = text
+                self?.tableView.beginUpdates()
+                self?.tableView.endUpdates()
+            }
+            
+            
+//                let bottomOffset = CGPoint(x: 0, y: baseView.height - scrollView.bounds.height + contentView.bottomY)
+//                let textViewOffset = CGPoint(x: 0, y: reasonV.frame.origin.y+320)
+//                if textViewOffset.y > bottomOffset.y {
+//                    scrollView.setContentOffset(bottomOffset, animated: true)
+//                } else {
+//                    scrollView.setContentOffset(textViewOffset, animated: true)
+//                }
+            
+            
+            return cell
+        default:
+            let cell : AddResultCell = self.tableView.dequeueReusableCell(withIdentifier: AddResultCell.reuseIdentifier, for: indexPath) as! AddResultCell
+            
+            cell.config(resultData)
+            return cell
+            
+        }
+    }
 }
+
+
+

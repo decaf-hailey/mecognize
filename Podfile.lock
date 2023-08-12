@@ -1,10 +1,10 @@
 PODS:
-  - Alamofire (5.6.4)
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
+  - Alamofire (5.7.1)
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
     - AppAuth/Core
   - GoogleSignIn (7.0.0):
     - AppAuth (~> 1.5)
@@ -15,15 +15,19 @@ PODS:
   - GTMAppAuth (2.0.0):
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 4.0, >= 1.5)
-  - GTMSessionFetcher/Core (3.1.0)
-  - ReachabilitySwift (5.0.0)
+  - GTMSessionFetcher/Core (3.1.1)
+  - Realm (10.41.0):
+    - Realm/Headers (= 10.41.0)
+  - Realm/Headers (10.41.0)
+  - RealmSwift (10.41.0):
+    - Realm (= 10.41.0)
 
 DEPENDENCIES:
   - Alamofire
   - AppAuth
   - GoogleSignIn
   - GoogleSignInSwiftSupport
-  - ReachabilitySwift
+  - RealmSwift (~> 10)
 
 SPEC REPOS:
   trunk:
@@ -33,17 +37,19 @@ SPEC REPOS:
     - GoogleSignInSwiftSupport
     - GTMAppAuth
     - GTMSessionFetcher
-    - ReachabilitySwift
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GoogleSignInSwiftSupport: 6ca6e5a978faa4cd43451b6b9b38b96ab5db1734
   GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
-  GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
+  Realm: 669efee7dc1ce0aa9f6739a60f8c0df0a3835067
+  RealmSwift: 6b7b0e91b79dc66d5cfceeb3b319cacfc9b1a70e
 
-PODFILE CHECKSUM: e2cf684f6acc02f4fa1ecf028ab7406af8de66a6
+PODFILE CHECKSUM: b5305d29d45921e3972e7d88f136e74e3de27156
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
