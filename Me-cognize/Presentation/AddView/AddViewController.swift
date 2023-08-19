@@ -53,7 +53,7 @@ class AddViewController : UIViewController, UITableViewDelegate, UITableViewData
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else { return }
             
-            self.keyboardBottom.constant = keyboardSize - safeareaBottom
+            self.keyboardBottom.constant = -(keyboardSize + safeareaBottom)
             self.view.layoutIfNeeded()
         }
     }
@@ -72,6 +72,7 @@ class AddViewController : UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func saveAction(_ sender: Any) {
         guard let resultData = resultData else {
+            self.showAlert("There are nothing to save.\nPlease send your data first.")
             return
         }
         let history = History(magnitude: resultData.magnitude, score: resultData.score, text: sendingData)
@@ -112,7 +113,6 @@ class AddViewController : UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             let cell : AddTypingCell = tableView.dequeueReusableCell(withIdentifier: AddTypingCell.reuseIdentifier, for: indexPath) as! AddTypingCell
             cell.textChanged = { [weak self] text in
-                print(text)
                 self?.sendingData = text
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()

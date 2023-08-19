@@ -14,8 +14,6 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     @IBOutlet var textView: MeTextView!
     
     var textChanged: ((String)->())?
-    //    var textViewEditing: (()->())?
-    
     
     let reasonPlaceholder = "Write your story in 5 to 100 characters"
     

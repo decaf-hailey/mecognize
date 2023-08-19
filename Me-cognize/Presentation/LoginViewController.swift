@@ -40,20 +40,26 @@ class LoginViewController: UIViewController {
                                                   responseType: OIDResponseTypeCode,
                                                   additionalParameters: nil)
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                Util.Print.PrintLight(printType: .responseError("appDelegate == null"))
                 return
             }
             
-            appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: self) { authState, error in
-                Util.Print.PrintLight(printType: .response("Got authorization tokens. Access token: \(authState?.lastTokenResponse?.accessToken ?? "DEFAULT_TOKEN")"))
-                
+            appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: self) { [weak self] authState, error in
+                guard let self = self else { return }
+
                 guard let accessToken = authState?.lastTokenResponse?.accessToken,
                       let refreshToken = authState?.lastTokenResponse?.refreshToken else {
+                    Util.Print.PrintLight(printType: .responseError(error?.localizedDescription))
+                    self.showAlert(error?.localizedDescription ?? "no token")
                     return
                 }
                 
+                Util.Print.PrintLight(printType: .response("Got authorization tokens. Access token: \(accessToken)"))
+                AppCredential.shared.set(accessToken, refreshToken: refreshToken)
+                //Save tokens on Local for test due to frequent builds.
+                LocalData.saveTokensForTest(accessToken: accessToken, refreshToken: refreshToken)
                 self.presentHisotyVc()
                 
-                AppCredential.shared.set(accessToken, refreshToken: refreshToken)
             }
         }
     }
@@ -63,22 +69,11 @@ class LoginViewController: UIViewController {
         Util.UI.makeKeyAndVisible(UINavigationController(rootViewController: historyVc))
     }
     
-    @IBAction func submit(_ sender: Any) {
-        // todo: test code 지우기
-        let token = "ya29.a0AfB_byBHxmLE3UyWbMT6emxrPi4dWH39JzTqfF6jdIP-7BCsI6dmiwqOdXMptcR0gd2GDnoEtfl1ng8cN0RECG4da0j9YrYIeJ9BbJdk4K1zjFtSKVNJ4jHMEY1YPadXkCdaPompmszCTQDGqkQx5ZVrURkGaCgYKAbcSARISFQHsvYlsqvK4RHHf4zcTGOZKi5689A0163"
-        
-        AppCredential.shared.set(token, refreshToken: token)
-        
+    @IBAction func forTest(_ sender: Any) {
+
+        let tokens = LocalData.getTokensForTest()
+        AppCredential.shared.set(tokens.accessToken, refreshToken: tokens.refreshToken)
         presentHisotyVc()
-        
-        
-        //        let data = Document(content: "", language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
-        //        NLRequest.analyzeSentiment(document: data) { response in
-        //            Util.Print.PrintLight(printType: .checkValue(response))
-        //        } failure: { error in
-        //            Util.Print.PrintLight(printType: .responseError(error))
-        //        }
-        
     }
     
     
