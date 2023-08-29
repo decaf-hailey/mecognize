@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
     }
     
     func presentHisotyVc(){
-        let historyVc = Util.UI.getViewControllerInStotyBoard(story: "Main", controller: HistoryViewController.self)
+        let historyVc = Util.UI.getViewControllerInStotyBoard(story: "Main", controller: historyviewController.self)
         Util.UI.makeKeyAndVisible(UINavigationController(rootViewController: historyVc))
     }
     

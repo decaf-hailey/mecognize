@@ -13,7 +13,6 @@ class HistoryCell: MeTableViewCell {
     @IBOutlet weak var titleLabel: MeLightLabel!
     @IBOutlet var gaugeView: UIView!
     var data: History?
-    // for gaugeView
     var gaugeValue: CGFloat = 0
     var gaugeBackLayer = CAShapeLayer()
     var gaugeLayer = CAShapeLayer()
@@ -58,11 +57,9 @@ extension HistoryCell {
             gaugeLayer.removeFromSuperlayer()
         }
         gaugeLayer = createGaugeLayer(back: false)
-//        gaugeLayer.strokeStart = 0.0
+//        gaugeLayer.strokeStart = 0.0 for animation
         gaugeLayer.strokeEnd = abs(gaugeValue)
         gaugeView.layer.addSublayer(gaugeLayer)
-        
-        
     }
     
     
