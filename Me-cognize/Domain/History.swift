@@ -20,9 +20,8 @@ class History : Codable {
         self.score = score
         self.text = text ?? ""
         self.date = Date()
-        self.title = Util.DateConverter.getDateString(.dayMMM, date: self.date)
+        self.title = Util.DateConverter.getDateString(.timeWeekdayMMM, date: self.date)
     }
-    
 }
 
 //class Histories : Codable {

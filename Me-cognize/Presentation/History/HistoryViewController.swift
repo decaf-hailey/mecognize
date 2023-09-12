@@ -32,43 +32,14 @@ class historyviewController: UITableViewController, HistoryDisplayLogic {
         setup()
     }
     
-    
-    private func setup() {
-        let viewController = self
-        let interactor = HistoryInteractor()
-        let presenter = HistoryPresenter()
-        let router = HistoryRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
-    }
-    
-    
-    func doSomething() {
         interactor?.requestHistory()
     }
     
+    
     func displayList(viewModel: HistoryModel.List.ViewModel) {
-        historyList = LocalData.loadHistory()
+        historyList = viewModel.historyList
         DispatchQueue.main.async {[weak self] in
             self?.tableView.reloadData()
         }
@@ -85,8 +56,22 @@ class historyviewController: UITableViewController, HistoryDisplayLogic {
         }
         
         cell.config(each)
-        
         return cell
     }
 }
 
+extension historyviewController {
+    
+    private func setup() {
+        let viewController = self
+        let interactor = HistoryInteractor()
+        let presenter = HistoryPresenter()
+        let router = HistoryRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+}

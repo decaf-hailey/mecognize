@@ -17,7 +17,7 @@ public enum MeError: Error, Identifiable, Hashable {
     case authError(errorCode: Int)
     case resultNil(errorCode: Int)
     case resultError(errorCode: Int, reason: String)
-    case jsonParsingError
+    case jsonParsingError(reason: String)
     case custom(reason: String)
 
     public var reason: String {
@@ -32,8 +32,8 @@ public enum MeError: Error, Identifiable, Hashable {
             return "(\(errorCode)), 결과가 없습니다."
         case .resultError(_, let reason):
             return reason
-        case .jsonParsingError:
-            return "올바른 형식이 아닙니다."
+        case .jsonParsingError(let reason):
+            return "올바른 형식이 아닙니다. \(reason)"
         case .custom(let reason):
             return reason
         }

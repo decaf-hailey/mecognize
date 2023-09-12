@@ -16,12 +16,18 @@ extension Util {
                 var bodyData: Data? = nil
                 if let _body = bodyParam {
                     do {
-                        let data = try? JSONSerialization.data(withJSONObject: _body, options: [])
+                        let data = try JSONSerialization.data(withJSONObject: _body, options: [])
                         bodyData = data
                     } catch (let err){
-                        Util.Print.PrintLight(printType: .systemError(" URL: \(String(describing: bodyParam)) == encodeBody JSONSerialization 에러 == \(err)"))
-                        throw MeError.jsonParsingError
-
+                        Util.Print.PrintLight(printType: .systemError(
+                            #"""
+                            encodeBody JSONSerialization 에러
+                            \#(String(describing: bodyParam))
+                            ---------------------------------
+                            \#(err)
+                            """#
+                        ))
+                        throw MeError.jsonParsingError(reason: err.localizedDescription)
                     }
                 }
                 

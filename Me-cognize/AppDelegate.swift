@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if let error = error {
+            if let _ = error {
 //                Util.UI.getKeyRootView()?.showAlert(error.localizedDescription)
             } else {
                 if let user = user {

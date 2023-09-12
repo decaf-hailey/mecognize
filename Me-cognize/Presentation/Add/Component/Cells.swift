@@ -16,28 +16,35 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     var textChanged: ((String)->())?
     
     let reasonPlaceholder = "Write your story in 5 to 100 characters"
+
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        textViewPlaceholder(sender: textView)
         textView.delegate = self
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+    
+    func config(first: Bool){
+        textViewPlaceholder(first: first)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         //커서 위치로 스크롤한다
         textView.becomeFirstResponder()
+        
+        if textView.text == reasonPlaceholder {
+            textViewPlaceholder(first: false)
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
         
-        
         let size = CGSize(width: baseView.frame.width, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
         
         textView.constraints.forEach { (constraint) in
-            if estimatedSize.height > 70  && constraint.firstAttribute == .height{
+            if estimatedSize.height > 70  && constraint.firstAttribute == .height {
                 constraint.constant = estimatedSize.height
                 
             }
@@ -55,25 +62,22 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            textViewPlaceholder(sender: textView)
+            textViewPlaceholder(first: true)
         } else {
             textChanged?(textView.text)
         }
     }
     
-    func textViewPlaceholder(sender: UITextView){
-        if sender.text == "" {
-            sender.textColor = UIColor.gray
-            sender.text = reasonPlaceholder
+    func textViewPlaceholder(first: Bool){
+        if first {
+            textView.textColor = UIColor.gray
+            textView.text = reasonPlaceholder
             return
+        } else {
+            textView.text = ""
+            textView.textColor = UIColor.black
         }
-        if sender.text == reasonPlaceholder {
-            sender.text = ""
-            sender.textColor = UIColor.black
-            return
-        }
-        sender.textColor = UIColor.black
-        
+        textView.textColor = UIColor.black
     }
     
 }
@@ -83,10 +87,9 @@ class AddResultCell : MeTableViewCell {
     
     @IBOutlet var label: MeLightLabel!
     
-    
     func config(_ data: Sentiment?){
         guard let data = data else {
-            label.text = "Trying sending your today!"
+            label.text = "Try sending your today!"
             return
         }
         label.text = String(describing: data)

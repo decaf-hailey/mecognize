@@ -17,19 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bNl-aE-sSb">
-                                <rect key="frame" x="119.66666666666669" y="361.66666666666669" width="154" height="154.00000000000006"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="lunchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="bNl-aE-sSb">
+                                <rect key="frame" x="-40" y="0.0" width="473" height="852"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="154" id="XMR-ne-R1B"/>
-                                    <constraint firstAttribute="width" constant="154" id="en5-ix-nhd"/>
+                                    <constraint firstAttribute="width" secondItem="bNl-aE-sSb" secondAttribute="height" multiplier="473:852" id="X4t-im-ofX"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bNl-aE-sSb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="AeN-lY-dxj"/>
-                            <constraint firstItem="bNl-aE-sSb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="N6u-K4-LuK"/>
+                            <constraint firstAttribute="trailing" secondItem="bNl-aE-sSb" secondAttribute="trailing" constant="-40" id="g7s-Id-P7V"/>
+                            <constraint firstItem="bNl-aE-sSb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="jvq-K6-RSh"/>
+                            <constraint firstAttribute="bottom" secondItem="bNl-aE-sSb" secondAttribute="bottom" id="lhY-wS-fuH"/>
+                            <constraint firstItem="bNl-aE-sSb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="nd2-b1-mH1"/>
+                            <constraint firstItem="bNl-aE-sSb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-40" id="psp-wt-uFx"/>
+                            <constraint firstAttribute="bottom" secondItem="bNl-aE-sSb" secondAttribute="bottom" id="xLC-Bq-pQn"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,7 +42,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="159" height="154"/>
+        <image name="lunchscreen" width="266.66665649414062" height="533.33331298828125"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

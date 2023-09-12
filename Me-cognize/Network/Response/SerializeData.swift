@@ -16,19 +16,14 @@ func SerializeData<T:Codable>(response: DataResponse<T, AFError>, type: T.Type, 
         let result = response.result
         switch result {
         case .success(_): break
-        case .failure(let error):
-            print(error.errorDescription)
+        case .failure(_):
             DispatchQueue.main.async {
                 failure(MeError.disconnected)
                 //            HudView.shared.dismissHud()
             }
         }
-        
-        
-    
         return
     }
-    Util.Print.PrintLight(printType: .response(response))
     
     switch response.result {
     case .success(_):
@@ -86,8 +81,7 @@ fileprivate func CommonResponse<T: Codable>(statusCode: Int, data: Data?, type: 
                 success(new.self)
             }
             catch let err as NSError {
-                Util.Print.PrintLight(printType: .responseError(err))
-                failure(.jsonParsingError)
+                failure(.jsonParsingError(reason: err.debugDescription))
             }
             return
         }

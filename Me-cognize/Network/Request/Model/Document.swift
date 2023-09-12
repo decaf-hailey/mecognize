@@ -11,14 +11,6 @@ struct Document : Codable {
     let content: String
     let language: String
     let type: String
-    
-//    init(content: String) {
-//        self.content = content
-//        self.language = "en"
-//        self.type = DocumentType.PLAIN_TEXT.rawValue
-//    }
-
-//    let gcsContentUri: String
 }
 
 enum DocumentType: String, Codable {

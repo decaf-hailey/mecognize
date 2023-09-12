@@ -17,8 +17,10 @@ class NLRequest {
         AF.request(router)
             .responseDecodable(queue: .main, decoder: decoder) { (response: DataResponse<T, AFError>) in
                 SerializeData(response: response, type: T.self) { data in
+                    Util.Print.PrintLight(printType: .response(router: router.path, data))
                     success(data)
                 } failure: { error in
+                    Util.Print.PrintLight(printType: .responseError(router: router.path, error))
                     failure(error)
                 }
             }
