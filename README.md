@@ -17,10 +17,10 @@
 
 - Google Cloud Natural Language API - [Analizing Sentiment](https://cloud.google.com/natural-language/docs/analyzing-sentiment)
 
-- iOS 16 (for SwiftUI 2+)
+- iOS 16
 - Swift 5
-- Alomofire
-- ReachabilitySwift
+- Clean Architecure
+- cocoapods: Alomofire, AppAuth, GoogleSignIn
 
 ## Before launching this app
 
