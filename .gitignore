@@ -1,0 +1,10 @@
+Pods/
+**/xcuserdata/*
+
+#rbenv 설정 제외
+.ruby-version
+
+Pods/
+
+mine.json
+AuthData/
