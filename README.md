@@ -19,7 +19,7 @@
 
 - iOS 16
 - Swift 5
-- Clean Architecure
+- Clean Architecture
 - cocoapods: Alomofire, AppAuth, GoogleSignIn
 
 ## Before launching this app
