@@ -1,5 +1,10 @@
 # mecognize
 
+| Splash | View reactions with the keyboard | Send and response of data |
+| ------------- | ------------- | ------------- | 
+| <video src="https://github.com/decaf-hailey/mecognize/assets/124033750/25f63c4f-3578-4c2a-ae70-2e25109a0e3c">  | <video src="https://github.com/decaf-hailey/mecognize/assets/124033750/8ee22512-0b4b-4bfe-91c4-5180fdd4ea24">| <video src="https://github.com/decaf-hailey/mecognize/assets/124033750/698a14b8-5910-4332-bed8-df0551905f02"> |
+
+
 >There are certain words commonly used by psychiatrist when suggesting solutions for overcoming lethargy.
 >
 >It is '**recognize**', such as recognizing oneself, discerning situation, acknowledging one's emotions and interests.
