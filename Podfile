@@ -11,6 +11,5 @@ target 'Me-cognize' do
 	pod 'AppAuth'
 	pod 'GoogleSignIn'
 	pod 'GoogleSignInSwiftSupport'
-        pod 'RealmSwift', '~>10'
 
 end

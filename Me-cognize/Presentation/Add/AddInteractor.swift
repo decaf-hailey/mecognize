@@ -27,8 +27,6 @@ class AddInteractor: AddBusinessLogic, AddDataStore {
   var worker: AddWorker?
   
   func getAnalyze(request: Add.Send.Request) {
-    worker = AddWorker()
-    worker?.doSomeWork()
       NLRequest.analyzeSentiment(document: request.document) { [weak self] response in
           let response = Add.Send.Response(documentSentiment: response.documentSentiment)
           self?.presenter?.displayAnalyze(response: response)

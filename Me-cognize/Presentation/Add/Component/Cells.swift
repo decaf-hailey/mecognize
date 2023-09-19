@@ -12,10 +12,10 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     
     @IBOutlet var baseView: UIView!
     @IBOutlet var textView: MeTextView!
-    
+    @IBOutlet var textCountLabel: MeLightLabel!
     var textChanged: ((String)->())?
     
-    let reasonPlaceholder = "Write your story in 5 to 100 characters"
+    let reasonPlaceholder = "Write your story in 5 to 200 characters"
 
     
     override func draw(_ rect: CGRect) {
@@ -24,8 +24,8 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
-    func config(first: Bool){
-        textViewPlaceholder(first: first)
+    func config(first: Bool, isSent: Bool){
+        textViewPlaceholder(isFirst: first, isSent: isSent)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -33,7 +33,7 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
         textView.becomeFirstResponder()
         
         if textView.text == reasonPlaceholder {
-            textViewPlaceholder(first: false)
+            textViewPlaceholder(isFirst: false, isSent: false)
         }
     }
     
@@ -53,8 +53,9 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView.text.count > 100 && !(text == "") {
-            ///팝업?
+        let count = textView.text.count+text.count
+        textCountLabel.text = count.toString()
+        if count > 200 && !(text == "") {
             return false
         }
         return true
@@ -62,16 +63,18 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            textViewPlaceholder(first: true)
+            textViewPlaceholder(isFirst: true, isSent: false)
         } else {
             textChanged?(textView.text)
         }
     }
     
-    func textViewPlaceholder(first: Bool){
-        if first {
+    func textViewPlaceholder(isFirst: Bool, isSent: Bool){
+        if isFirst {
             textView.textColor = UIColor.gray
             textView.text = reasonPlaceholder
+            return
+        } else if isSent {
             return
         } else {
             textView.text = ""

@@ -16,18 +16,12 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 4.0, >= 1.5)
   - GTMSessionFetcher/Core (3.1.1)
-  - Realm (10.41.0):
-    - Realm/Headers (= 10.41.0)
-  - Realm/Headers (10.41.0)
-  - RealmSwift (10.41.0):
-    - Realm (= 10.41.0)
 
 DEPENDENCIES:
   - Alamofire
   - AppAuth
   - GoogleSignIn
   - GoogleSignInSwiftSupport
-  - RealmSwift (~> 10)
 
 SPEC REPOS:
   trunk:
@@ -37,8 +31,6 @@ SPEC REPOS:
     - GoogleSignInSwiftSupport
     - GTMAppAuth
     - GTMSessionFetcher
-    - Realm
-    - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
@@ -47,9 +39,7 @@ SPEC CHECKSUMS:
   GoogleSignInSwiftSupport: 6ca6e5a978faa4cd43451b6b9b38b96ab5db1734
   GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
-  Realm: 669efee7dc1ce0aa9f6739a60f8c0df0a3835067
-  RealmSwift: 6b7b0e91b79dc66d5cfceeb3b319cacfc9b1a70e
 
-PODFILE CHECKSUM: b5305d29d45921e3972e7d88f136e74e3de27156
+PODFILE CHECKSUM: 9efe4b7adae47618ff271b878649e6a40122767c
 
 COCOAPODS: 1.12.1

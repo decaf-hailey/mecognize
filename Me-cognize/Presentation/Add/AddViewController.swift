@@ -23,7 +23,12 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     var router: (NSObjectProtocol & AddRoutingLogic & AddDataPassing)?
     
     @IBOutlet var tableView: UITableView!
+    
+    // send button layout
     @IBOutlet var keyboardBottom: NSLayoutConstraint!
+    @IBOutlet var buttonLeft: NSLayoutConstraint!
+    @IBOutlet var buttonRight: NSLayoutConstraint!
+    @IBOutlet var buttonHeight: NSLayoutConstraint!
     
     var sendingData: String = ""
     var resultData: Sentiment?
@@ -75,8 +80,6 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
         )
     }
     
-
-    
     @IBAction func saveAction(_ sender: Any) {
         guard let resultData = resultData else {
             self.showAlert("There are no result to save.\nPlease send your data first.")
@@ -123,7 +126,7 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
         switch indexPath.row {
         case 0:
             let cell : AddTypingCell = tableView.dequeueReusableCell(withIdentifier: AddTypingCell.reuseIdentifier, for: indexPath) as! AddTypingCell
-            cell.config(first: sendingData == "")
+            cell.config(first: sendingData == "", isSent: resultData != nil)
             cell.textChanged = { [weak self] text in
                 self?.updateSendingData(text)
             }
@@ -163,7 +166,11 @@ extension AddViewController {
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else { return }
 
-            self.keyboardBottom.constant = -(keyboardSize + safeareaBottom)
+            self.keyboardBottom.constant = -(keyboardSize) + safeareaBottom
+            self.buttonLeft.constant = 0
+            self.buttonRight.constant = 0
+            self.buttonHeight.constant = 50
+            self.view.layoutSubviews()
             self.view.layoutIfNeeded()
         }
     }
@@ -175,6 +182,9 @@ extension AddViewController {
             guard let self = self else { return }
             
             self.keyboardBottom.constant = 0
+            self.buttonLeft.constant = 15
+            self.buttonRight.constant = 15
+            self.buttonHeight.constant = 35
             self.view.layoutSubviews()
             self.view.layoutIfNeeded()
         }

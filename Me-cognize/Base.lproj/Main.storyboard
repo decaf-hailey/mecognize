@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,14 +76,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UJf-9Y-9Cl">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="750"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTypingCell" rowHeight="244" id="GNV-tg-Djm" customClass="AddTypingCell" customModule="Me_cognize" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="244"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTypingCell" rowHeight="267" id="GNV-tg-Djm" customClass="AddTypingCell" customModule="Me_cognize" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="267"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GNV-tg-Djm" id="04I-i9-68q">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="244"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="267"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your day?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hN-Pm-AaD" customClass="MeRegularLabel" customModule="Me_cognize" customModuleProvider="target">
@@ -105,10 +106,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfJ-me-SuG">
-                                                    <rect key="frame" x="40" y="67" width="310" height="151"/>
+                                                    <rect key="frame" x="40" y="67" width="310" height="164"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p4A-Bj-SeS" customClass="MeTextView" customModule="Me_cognize" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="151"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="164"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="100" constant="70" id="XpI-TQ-k32"/>
@@ -127,8 +128,15 @@
                                                         <constraint firstAttribute="bottom" secondItem="p4A-Bj-SeS" secondAttribute="bottom" id="z1I-88-YqO"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-OD-S2B" customClass="MeLightLabel" customModule="Me_cognize" customModuleProvider="target">
+                                                    <rect key="frame" x="339" y="234" width="11" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="X3J-OD-S2B" firstAttribute="top" secondItem="PfJ-me-SuG" secondAttribute="bottom" constant="3" id="0O4-fC-kEI"/>
                                                 <constraint firstItem="PfJ-me-SuG" firstAttribute="trailing" secondItem="8hN-Pm-AaD" secondAttribute="trailing" id="0hZ-Va-Bfw"/>
                                                 <constraint firstItem="TXt-XN-qvr" firstAttribute="top" secondItem="8hN-Pm-AaD" secondAttribute="bottom" constant="5" id="2co-36-z4J"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8hN-Pm-AaD" secondAttribute="trailing" constant="20" id="Hhb-oT-jYZ"/>
@@ -137,16 +145,18 @@
                                                 <constraint firstItem="PfJ-me-SuG" firstAttribute="leading" secondItem="8hN-Pm-AaD" secondAttribute="leading" id="cU7-JM-hXu"/>
                                                 <constraint firstItem="8hN-Pm-AaD" firstAttribute="top" secondItem="04I-i9-68q" secondAttribute="topMargin" constant="15" id="dab-bM-5vG"/>
                                                 <constraint firstItem="TXt-XN-qvr" firstAttribute="leading" secondItem="8hN-Pm-AaD" secondAttribute="leading" id="fQi-HT-Mr9"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PfJ-me-SuG" secondAttribute="bottom" constant="15" id="pay-pp-S1w"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PfJ-me-SuG" secondAttribute="bottom" constant="25" id="pay-pp-S1w"/>
+                                                <constraint firstItem="X3J-OD-S2B" firstAttribute="trailing" secondItem="p4A-Bj-SeS" secondAttribute="trailing" id="sku-6a-k9o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="baseView" destination="PfJ-me-SuG" id="Wdx-3f-QZa"/>
+                                            <outlet property="textCountLabel" destination="X3J-OD-S2B" id="u34-TU-UzX"/>
                                             <outlet property="textView" destination="p4A-Bj-SeS" id="FOd-Lf-kfv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddResultCell" rowHeight="127" id="4DM-72-4sa" customClass="AddResultCell" customModule="Me_cognize" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="294" width="390" height="127"/>
+                                        <rect key="frame" x="0.0" y="317" width="390" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4DM-72-4sa" id="8LP-1F-XpK">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="127"/>
@@ -204,10 +214,13 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fep-dP-AVT">
-                                <rect key="frame" x="0.0" y="750" width="390" height="60"/>
+                                <rect key="frame" x="0.0" y="760" width="390" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbB-Ad-xAm">
-                                        <rect key="frame" x="15" y="12.666666666666629" width="360" height="35"/>
+                                        <rect key="frame" x="15" y="15" width="360" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="s3y-Zo-qer"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Send"/>
                                         <connections>
@@ -219,8 +232,8 @@
                                 <constraints>
                                     <constraint firstItem="SbB-Ad-xAm" firstAttribute="leading" secondItem="fep-dP-AVT" secondAttribute="leading" constant="15" id="19o-l4-HBB"/>
                                     <constraint firstAttribute="trailing" secondItem="SbB-Ad-xAm" secondAttribute="trailing" constant="15" id="QoG-6z-xTl"/>
-                                    <constraint firstAttribute="height" constant="60" id="Xvd-lA-NeW"/>
-                                    <constraint firstItem="SbB-Ad-xAm" firstAttribute="centerY" secondItem="fep-dP-AVT" secondAttribute="centerY" id="YWh-A8-gUm"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xvd-lA-NeW"/>
+                                    <constraint firstAttribute="bottom" secondItem="SbB-Ad-xAm" secondAttribute="bottom" id="mVw-A5-ne4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -244,6 +257,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonHeight" destination="s3y-Zo-qer" id="bHq-qW-E5D"/>
+                        <outlet property="buttonLeft" destination="19o-l4-HBB" id="rgX-cP-YIt"/>
+                        <outlet property="buttonRight" destination="QoG-6z-xTl" id="IDv-JG-KDV"/>
                         <outlet property="keyboardBottom" destination="0vY-3l-0hX" id="sj1-dZ-SgO"/>
                         <outlet property="tableView" destination="UJf-9Y-9Cl" id="dAf-bx-VG0"/>
                     </connections>
@@ -361,7 +377,7 @@
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

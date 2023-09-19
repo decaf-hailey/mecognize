@@ -37,6 +37,9 @@ class historyviewController: UITableViewController, HistoryDisplayLogic {
         interactor?.requestHistory()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        interactor?.requestHistory()
+    }
     
     func displayList(viewModel: HistoryModel.List.ViewModel) {
         historyList = viewModel.historyList
