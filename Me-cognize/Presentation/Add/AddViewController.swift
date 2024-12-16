@@ -43,15 +43,6 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
         setup()
     }
     
-    //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    if let scene = segue.identifier {
-    //      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-    //      if let router = router, router.responds(to: selector) {
-    //        router.perform(selector, with: segue)
-    //      }
-    //    }
-    //  }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         preventDoubleTap()
@@ -159,7 +150,8 @@ extension AddViewController {
     @objc func keyboardWillShow(_ sender: NSNotification) {
         let info = sender.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-//        let f = UIScreen.main.bounds.size.height - keyboardSize
+        // for test     
+        // let f = UIScreen.main.bounds.size.height - keyboardSize
         let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         let safeareaBottom = Util.UI.getKeyRootView()?.view.safeAreaInsets.bottom ?? 0
         
