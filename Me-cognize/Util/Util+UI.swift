@@ -11,7 +11,6 @@ import UIKit
 extension Util {
     enum UI {
         static func getKeyRootView() -> UIViewController? {
-//            if #available(iOS 13.0, *) {
                 let key = UIApplication.shared.connectedScenes
                     .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
                     .map({$0 as? UIWindowScene})
@@ -19,9 +18,6 @@ extension Util {
                     .first?.windows
                     .filter({$0.isKeyWindow}).first
                 return key?.rootViewController
-//            } else {
-//                return UIApplication.shared.keyWindow?.rootViewController
-//            }
         }
         
         static func getKeyWindow(_ callback: @escaping (UIWindow?)->()) { //mainthread에서 실행할 것!
@@ -39,7 +35,6 @@ extension Util {
         static func presentFullOpacitySheet(_ nextView: UIViewController, completion: (() -> Void)? = nil){
             nextView.view.backgroundColor = .clear
             nextView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-//            nextView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
             DispatchQueue.main.async {
                 Util.UI.getKeyRootView()?.present(nextView, animated: false, completion: completion)
             }
