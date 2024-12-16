@@ -57,7 +57,8 @@ extension HistoryCell {
             gaugeLayer.removeFromSuperlayer()
         }
         gaugeLayer = createGaugeLayer(back: false)
-//        gaugeLayer.strokeStart = 0.0 for animation
+        // for animation
+        // gaugeLayer.strokeStart = 0.0 
         gaugeLayer.strokeEnd = abs(gaugeValue)
         gaugeView.layer.addSublayer(gaugeLayer)
     }
