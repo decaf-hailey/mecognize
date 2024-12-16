@@ -11,7 +11,7 @@ import Alamofire
 extension Util {
     enum Network{
         struct Request {
-            //바디 파라미터
+            // Body parameter
             static func encodeBody(bodyParam: Parameters? = nil) throws -> Data? {
                 var bodyData: Data? = nil
                 if let _body = bodyParam {
@@ -21,7 +21,7 @@ extension Util {
                     } catch (let err){
                         Util.Print.PrintLight(printType: .systemError(
                             #"""
-                            encodeBody JSONSerialization 에러
+                            encodeBody JSONSerialization Error
                             \#(String(describing: bodyParam))
                             ---------------------------------
                             \#(err)
@@ -39,13 +39,14 @@ extension Util {
                 
                 var _urlString = urlString.encodeUrl()
                 
-                //1.URL 파라미터
+                // URL Parameter
                 if let _urlParam = urlParam {
                     _urlString += _urlParam.queryParameters
                 }
                 
                 return _urlString
             }
+            
             static func jsonString<T:Codable>(data: T) -> String? {
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
@@ -59,6 +60,7 @@ extension Util {
                     return nil
                 }
             }
+            
             static func jsonData<T:Codable>(data: T) -> Data? {
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted

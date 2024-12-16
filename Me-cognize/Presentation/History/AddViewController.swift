@@ -97,7 +97,7 @@ class AddViewController : UIViewController, UITableViewDelegate, UITableViewData
                 self?.tableView.beginUpdates()
                 self?.tableView.endUpdates()
             }
-            
+//                * test code for animation            
 //                let bottomOffset = CGPoint(x: 0, y: baseView.height - scrollView.bounds.height + contentView.bottomY)
 //                let textViewOffset = CGPoint(x: 0, y: reasonV.frame.origin.y+320)
 //                if textViewOffset.y > bottomOffset.y {

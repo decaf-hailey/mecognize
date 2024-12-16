@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if let _ = error {
-//                Util.UI.getKeyRootView()?.showAlert(error.localizedDescription)
+                // error alert for future                
+                // Util.UI.getKeyRootView()?.showAlert(error.localizedDescription)
             } else {
                 if let user = user {
                     Util.Print.PrintLight(printType: .checkValue("google login  accessToken = \(user.accessToken.tokenString) \n refresh token = \(user.refreshToken.tokenString)"))
