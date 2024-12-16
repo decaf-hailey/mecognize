@@ -10,7 +10,7 @@ import Foundation
 extension Util{
     enum DateConverter {
         /**
-         포멧별로 날짜를 컨버트 해 줌
+         converting the dates with formats
          
          - .commaDay :         "yyyy.MM.dd"
          - .dashDayCommaTime :     "yyyy-MM-dd HH:mm:ss"
