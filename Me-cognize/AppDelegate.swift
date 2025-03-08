@@ -10,7 +10,7 @@ import CoreData
 import GoogleSignIn
 import AppAuth
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
