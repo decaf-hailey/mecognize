@@ -151,7 +151,6 @@ extension AddViewController {
     @objc func keyboardWillShow(_ sender: NSNotification) {
         let info = sender.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        // for test
         // let f = UIScreen.main.bounds.size.height - keyboardSize
         let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         let safeareaBottom = Util.UI.getKeyRootView()?.view.safeAreaInsets.bottom ?? 0
