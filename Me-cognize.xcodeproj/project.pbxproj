@@ -51,7 +51,7 @@
 		D2D775252D7C95F400E84A77 /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = D2D775222D7C95F400E84A77 /* key.json */; };
 		D2D775262D7C95F400E84A77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2D775212D7C95F400E84A77 /* GoogleService-Info.plist */; };
 		D2D775272D7C95F400E84A77 /* credentials_google.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2D775202D7C95F400E84A77 /* credentials_google.plist */; };
-		D2D775282D7C95F400E84A77 /* 사용법.md in Resources */ = {isa = PBXBuildFile; fileRef = D2D775232D7C95F400E84A77 /* 사용법.md */; };
+		D2D775282D7C95F400E84A77 /* introduction.md in Resources */ = {isa = PBXBuildFile; fileRef = D2D775232D7C95F400E84A77 /* introduction.md */; };
 		D2E0705F2A5A6B7500D3308B /* Util+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E0705E2A5A6B7500D3308B /* Util+UI.swift */; };
 		D2E070612A5A6EE300D3308B /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E070602A5A6EE300D3308B /* ReusableView.swift */; };
 		D2E070632A5A770100D3308B /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E070622A5A770100D3308B /* History.swift */; };
@@ -111,7 +111,7 @@
 		D2D775202D7C95F400E84A77 /* credentials_google.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = credentials_google.plist; sourceTree = "<group>"; };
 		D2D775212D7C95F400E84A77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2D775222D7C95F400E84A77 /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
-		D2D775232D7C95F400E84A77 /* 사용법.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "사용법.md"; sourceTree = "<group>"; };
+		D2D775232D7C95F400E84A77 /* introduction.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = introduction.md; sourceTree = "<group>"; };
 		D2E0705E2A5A6B7500D3308B /* Util+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Util+UI.swift"; sourceTree = "<group>"; };
 		D2E070602A5A6EE300D3308B /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D2E070622A5A770100D3308B /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				D2D775202D7C95F400E84A77 /* credentials_google.plist */,
 				D2D775212D7C95F400E84A77 /* GoogleService-Info.plist */,
 				D2D775222D7C95F400E84A77 /* key.json */,
-				D2D775232D7C95F400E84A77 /* 사용법.md */,
+				D2D775232D7C95F400E84A77 /* introduction.md */,
 			);
 			path = AuthData;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 				D2D775252D7C95F400E84A77 /* key.json in Resources */,
 				D2D775262D7C95F400E84A77 /* GoogleService-Info.plist in Resources */,
 				D2D775272D7C95F400E84A77 /* credentials_google.plist in Resources */,
-				D2D775282D7C95F400E84A77 /* 사용법.md in Resources */,
+				D2D775282D7C95F400E84A77 /* introduction.md in Resources */,
 				D2E622B729AA1341008033A2 /* LaunchScreen.storyboard in Resources */,
 				D265048229D81923005F6266 /* NotoSerifKR-Regular.otf in Resources */,
 				D2E622B429AA1341008033A2 /* Assets.xcassets in Resources */,

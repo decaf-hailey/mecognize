@@ -13,7 +13,7 @@
 import UIKit
 
 protocol AddBusinessLogic {
-    func getAnalyze(request: Add.Send.Request)
+    func getAnalyze(request: Add.Send.Request) async
     func saveLocal(request: Add.Save.Request)
 }
 
@@ -26,23 +26,27 @@ class AddInteractor: AddBusinessLogic, AddDataStore {
   var presenter: AddPresentationLogic?
   var worker: AddWorker?
   
-  func getAnalyze(request: Add.Send.Request) {
-      NLRequest.analyzeSentiment(document: request.document) { [weak self] response in
-          let response = Add.Send.Response(documentSentiment: response.documentSentiment)
-          self?.presenter?.displayAnalyze(response: response)
-      } failure: { [weak self] error in
+  func getAnalyze(request: Add.Send.Request) async {
+      
+      let result = await NLRequest.analyzeSentiment(document: request.document)
+      switch result {
+      case .success(let data):
+          let response = Add.Send.Response(documentSentiment: data.documentSentiment)
+          presenter?.displayAnalyze(response: response)
+      case .failure(let error):
           let response = Add.Alert.ViewModel(message: error.localizedDescription)
-          self?.presenter?.showAlert(response: response)
+          presenter?.showAlert(response: response)
       }
   }
     
     func saveLocal(request: Add.Save.Request) {
-        LocalData.saveHistory(request.history) { [weak self] in
+        do {
+            try LocalData.saveHistory(request.history)
             let response = Add.Alert.ViewModel(message: "Saved!")
-            self?.presenter?.showAlert(response: response)
-        } onFail: { [weak self] in
+            presenter?.showAlert(response: response)
+        }  catch {
             let response = Add.Alert.ViewModel(message: "Error -------- \n \(request.history.title)")
-            self?.presenter?.showAlert(response: response)
+            presenter?.showAlert(response: response)
         }
     }
     
