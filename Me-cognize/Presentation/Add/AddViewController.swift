@@ -82,10 +82,11 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     }
     
     @IBAction func sendAction(_ sender: Any) {
-        let document = Document(content: sendingData, language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
-        let request = Add.Send.Request(document: document)
-        interactor?.getAnalyze(request: request)
-   
+        Task {
+            let document = Document(content: sendingData, language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
+            let request = Add.Send.Request(document: document)
+            await interactor?.getAnalyze(request: request)
+        }
     }
     
     func updateSendingData(_ text : String){
@@ -150,7 +151,6 @@ extension AddViewController {
     @objc func keyboardWillShow(_ sender: NSNotification) {
         let info = sender.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        // for test     
         // let f = UIScreen.main.bounds.size.height - keyboardSize
         let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         let safeareaBottom = Util.UI.getKeyRootView()?.view.safeAreaInsets.bottom ?? 0
