@@ -8,3 +8,6 @@ Pods/
 
 mine.json
 AuthData/
+
+.DS_Store
+Me-cognize/Info.plist
