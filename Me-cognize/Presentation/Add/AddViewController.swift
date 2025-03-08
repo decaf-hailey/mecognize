@@ -82,10 +82,11 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     }
     
     @IBAction func sendAction(_ sender: Any) {
-        let document = Document(content: sendingData, language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
-        let request = Add.Send.Request(document: document)
-        interactor?.getAnalyze(request: request)
-   
+        Task {
+            let document = Document(content: sendingData, language: "en", type: DocumentType.PLAIN_TEXT.rawValue)
+            let request = Add.Send.Request(document: document)
+            await interactor?.getAnalyze(request: request)
+        }
     }
     
     func updateSendingData(_ text : String){

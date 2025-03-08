@@ -29,13 +29,23 @@ struct LocalData{
         onSuccess()
     }
     
+    static func saveHistory(_ each : History) throws {
+        var localData = loadHistory()
+        localData.append(each)
+        do {
+            let data = try PropertyListEncoder().encode(localData)
+            UserDefaults.standard.set(data, forKey: LocalDataKey.histories.rawValue)
+        } catch {
+            throw MeError.saveFailed(reason: error.localizedDescription)
+        }
+    }
+    
     static func loadHistory() -> [History] {
         guard let data = UserDefaults.standard.data(forKey: LocalDataKey.histories.rawValue),
               let list = try? PropertyListDecoder().decode([History].self, from: data) else {
             return []
         }
         return list
-        
     }
     
     static func saveTokensForTest(accessToken: String, refreshToken: String){

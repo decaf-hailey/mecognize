@@ -29,7 +29,9 @@ class AppCredential {
         let getCredencial = Util.fromMock(dataType: Credential.self, forResource: "key")!
         self.clientId = getCredencial.clientId
         self.apiKey = getCredencial.apiKey
-        self.redirectURI = getCredencial.redirectURI
+        let id = (clientId.split(separator: ".").first ?? "").toString
+        self.redirectURI = getCredencial.redirectURI.replace(target: "YOUR_CLIENT_ID", withString: id)
+        print(id)
     }
     
     func set(_ accessToken: String?, refreshToken: String?){

@@ -37,8 +37,6 @@ enum APIsRouter: URLRequestConvertible, NLRestApis {
         }
     }
     
-    
-    
     func asURLRequest() throws -> URLRequest {
        try self.makeRequest()
     }

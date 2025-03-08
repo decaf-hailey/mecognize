@@ -28,6 +28,7 @@
 		D265048229D81923005F6266 /* NotoSerifKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D265048129D81923005F6266 /* NotoSerifKR-Regular.otf */; };
 		D265048529D81998005F6266 /* MeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D265048429D81998005F6266 /* MeLabel.swift */; };
 		D265048729D81A1B005F6266 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D265048629D81A1B005F6266 /* Font+Extension.swift */; };
+		D26A74FF2D7C7C6400A5FE4B /* introduction.md in Resources */ = {isa = PBXBuildFile; fileRef = D26A74FE2D7C7C6400A5FE4B /* introduction.md */; };
 		D2867B1829AB80D90006D9C5 /* APIsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2867B1729AB80D90006D9C5 /* APIsRouter.swift */; };
 		D2867B1A29AB82BC0006D9C5 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2867B1929AB82BC0006D9C5 /* Server.swift */; };
 		D2867B1D29AB84150006D9C5 /* MeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2867B1C29AB84150006D9C5 /* MeError.swift */; };
@@ -87,6 +88,7 @@
 		D265048129D81923005F6266 /* NotoSerifKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Regular.otf"; sourceTree = "<group>"; };
 		D265048429D81998005F6266 /* MeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeLabel.swift; sourceTree = "<group>"; };
 		D265048629D81A1B005F6266 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		D26A74FE2D7C7C6400A5FE4B /* introduction.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = introduction.md; sourceTree = "<group>"; };
 		D2867B1729AB80D90006D9C5 /* APIsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIsRouter.swift; sourceTree = "<group>"; };
 		D2867B1929AB82BC0006D9C5 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		D2867B1C29AB84150006D9C5 /* MeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeError.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				B7F8F0B82D6D51EF000C778E /* credentials_google.plist */,
 				B7F8F0B92D6D51EF000C778E /* GoogleService-Info.plist */,
 				B73FE3FF2D6D2C5B0084177F /* key.json */,
+				D26A74FE2D7C7C6400A5FE4B /* introduction.md */,
 			);
 			path = AuthData;
 			sourceTree = "<group>";
@@ -324,8 +327,8 @@
 		D2E622A629AA1340008033A2 /* Me-cognize */ = {
 			isa = PBXGroup;
 			children = (
-				B73FE3FE2D6D2C1B0084177F /* AuthData */,
 				D2E622B829AA1341008033A2 /* Info.plist */,
+				B73FE3FE2D6D2C1B0084177F /* AuthData */,
 				D2E622A729AA1340008033A2 /* AppDelegate.swift */,
 				D2E622A929AA1340008033A2 /* SceneDelegate.swift */,
 				D2867B1629AB7DAE0006D9C5 /* Network */,
@@ -428,6 +431,7 @@
 				D2E622B429AA1341008033A2 /* Assets.xcassets in Resources */,
 				B7F8F0BA2D6D51EF000C778E /* credentials_google.plist in Resources */,
 				B7F8F0BB2D6D51EF000C778E /* GoogleService-Info.plist in Resources */,
+				D26A74FF2D7C7C6400A5FE4B /* introduction.md in Resources */,
 				D265048029D81913005F6266 /* NotoSerifKR-ExtraLight.otf in Resources */,
 				D2E622AF29AA1340008033A2 /* Main.storyboard in Resources */,
 				B73FE4002D6D2C5B0084177F /* key.json in Resources */,

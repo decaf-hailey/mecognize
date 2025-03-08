@@ -48,7 +48,7 @@ class LoginWorker {
                     return
                 }
                 
-                Util.Print.PrintLight(printType: .response(router: "Got authorization tokens.", "Access token: \(accessToken)"))
+                Util.Print.PrintLight(printType: .response(router: "Got authorization tokens. Access token: \(accessToken)", nil))
                 AppCredential.shared.set(accessToken, refreshToken: refreshToken)
                 //Save tokens locally for test builds.
                 LocalData.saveTokensForTest(accessToken: accessToken, refreshToken: refreshToken)
