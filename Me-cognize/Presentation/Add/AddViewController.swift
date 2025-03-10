@@ -30,8 +30,21 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     @IBOutlet var buttonRight: NSLayoutConstraint!
     @IBOutlet var buttonHeight: NSLayoutConstraint!
     
-    var sendingData: String = ""
-    var resultData: Sentiment?
+    var sendingData: String = ""{
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.beginUpdates()
+                self?.tableView.endUpdates()
+            }
+        }
+    }
+    var resultData: Sentiment? {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -89,17 +102,15 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
         }
     }
     
+
     func updateSendingData(_ text : String){
         sendingData = text
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    
     }
     
+ 
     func updateResultData(viewModel: Add.Send.ViewModel){
         resultData = viewModel.sentiment
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
     }
     
     func showAlert(viewModel: Add.Alert.ViewModel) {
@@ -147,13 +158,14 @@ extension AddViewController {
         router.dataStore = interactor
     }
     
-    
+    @MainActor
     @objc func keyboardWillShow(_ sender: NSNotification) {
         let info = sender.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         // let f = UIScreen.main.bounds.size.height - keyboardSize
         let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         let safeareaBottom = Util.UI.getKeyRootView()?.view.safeAreaInsets.bottom ?? 0
+        
         
         UIView.animate(withDuration: duration) { [weak self] in
             guard let self = self else { return }
@@ -167,6 +179,7 @@ extension AddViewController {
         }
     }
     
+    @MainActor
     @objc func keyboardWillHide(_ sender: NSNotification) {
         let info = sender.userInfo!
         let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
