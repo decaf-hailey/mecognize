@@ -11,8 +11,8 @@ import UIKit
 extension UIViewController {
     
     func showAlert(_ message:String) {
-        let alert = UIAlertController(title: "알림", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         DispatchQueue.main.async { [weak self] in
             self?.present(alert, animated: true, completion: nil)
         }

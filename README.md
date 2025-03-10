@@ -37,18 +37,18 @@ Download now and begin your journey toward a healthier, more positive you!
 
 ### Development Environment 
 
-- Google Cloud Natural Language API - [Analizing Sentiment](https://cloud.google.com/natural-language/docs/analyzing-sentiment)
+- Google Cloud Natural Language API - [Analyzing Sentiment](https://cloud.google.com/natural-language/docs/analyzing-sentiment)
 
 - iOS 16+
 - Swift 5.9
 - Clean Architecture + VIPER, MVVM
-- cocoapods: Alomofire, AppAuth, GoogleSignIn
+- cocoapods: Alamofire, AppAuth, GoogleSignIn
 
 ### Before launching this app
 
 1. Get _**AuthData**_ folder (included files) from me to set google api.
 
-2. Put a folder in the project > Me-conginze/AuthData
+2. Put a folder in the project > Me-cognize/AuthData
 
 3. Launch the project.
 

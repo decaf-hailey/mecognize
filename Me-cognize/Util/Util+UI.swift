@@ -66,21 +66,18 @@ extension Util {
         }
         
         static func makeKeyAndVisible(_ vc: UIViewController?, _ appdelegateWindow: UIWindow? = nil) {
-            guard appdelegateWindow == nil else {
-                appdelegateWindow?.rootViewController = vc
-                appdelegateWindow?.makeKeyAndVisible()
-                return
+            if let scene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive
+                }).map({$0 as? UIWindowScene}) {
+                
+                if let window = scene?.windows.first(where: { $0.isKeyWindow }) {
+                    window.rootViewController = vc
+                    window.makeKeyAndVisible()
+                    return
+                }
+                
+                Util.Print.PrintLight(printType: .systemError("fail to find key window"))
             }
-        
-            let key = UIApplication.shared.connectedScenes
-                .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
-                .map({$0 as? UIWindowScene})
-                .compactMap({$0})
-                .first?.windows
-                .filter({$0.isKeyWindow}).first
-            
-            key?.rootViewController = vc
-            key?.makeKeyAndVisible()
         }
         
         static func hideKeyboard() {

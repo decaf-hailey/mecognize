@@ -61,6 +61,7 @@
 		D2E622B229AA1340008033A2 /* Me_cognize.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E622B029AA1340008033A2 /* Me_cognize.xcdatamodeld */; };
 		D2E622B429AA1341008033A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E622B329AA1341008033A2 /* Assets.xcassets */; };
 		D2E622B729AA1341008033A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E622B529AA1341008033A2 /* LaunchScreen.storyboard */; };
+		D2E9B01A2D7CCB3D00A6997C /* dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2E9B0192D7CCB3D00A6997C /* dev.xcconfig */; };
 		D2EB34E729E28947009AE6C8 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB34E629E28947009AE6C8 /* Cells.swift */; };
 		D2FAEF3A2A6B99B300A12589 /* Util+DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FAEF392A6B99B300A12589 /* Util+DateConverter.swift */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,7 @@
 		D2E622B329AA1341008033A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2E622B629AA1341008033A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2E622B829AA1341008033A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2E9B0192D7CCB3D00A6997C /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
 		D2EB34E629E28947009AE6C8 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		D2FAEF392A6B99B300A12589 /* Util+DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Util+DateConverter.swift"; sourceTree = "<group>"; };
 		FC0B9DCF80D1115615BFBFE7 /* Pods_Me_cognize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Me_cognize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +303,7 @@
 				D2D775212D7C95F400E84A77 /* GoogleService-Info.plist */,
 				D2D775222D7C95F400E84A77 /* key.json */,
 				D2D775232D7C95F400E84A77 /* introduction.md */,
+				D2E9B0192D7CCB3D00A6997C /* dev.xcconfig */,
 			);
 			path = AuthData;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				D265048229D81923005F6266 /* NotoSerifKR-Regular.otf in Resources */,
 				D2E622B429AA1341008033A2 /* Assets.xcassets in Resources */,
 				D265048029D81913005F6266 /* NotoSerifKR-ExtraLight.otf in Resources */,
+				D2E9B01A2D7CCB3D00A6997C /* dev.xcconfig in Resources */,
 				D2E622AF29AA1340008033A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
