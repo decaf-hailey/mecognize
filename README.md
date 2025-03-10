@@ -44,6 +44,7 @@ Download now and begin your journey toward a healthier, more positive you!
 - Clean Architecture + VIPER, MVVM
 - cocoapods: Alamofire, AppAuth, GoogleSignIn
 
+
 ### Before launching this app
 
 1. Get _**AuthData**_ folder (included files) from me to set google api.
