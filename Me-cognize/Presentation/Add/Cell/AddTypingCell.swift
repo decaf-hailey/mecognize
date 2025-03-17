@@ -1,14 +1,14 @@
 //
-//  AddVariableCell.swift
+//  AddTypingCell.swift
 //  Me-cognize
 //
-//  Created by Hailey on 2023/04/09.
+//  Created by hailey on 3/17/25.
 //
 
 import Foundation
 import UIKit
 
-class AddTypingCell : MeTableViewCell, UITextViewDelegate {
+class AddTypingCell : MeTableViewCell {
     
     @IBOutlet var baseView: UIView!
     @IBOutlet var textView: MeTextView!
@@ -27,9 +27,12 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     func config(first: Bool, isSent: Bool){
         textViewPlaceholder(isFirst: first, isSent: isSent)
     }
+}
+
+extension AddTypingCell: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        //커서 위치로 스크롤한다
+        //scroll to cursor
         textView.becomeFirstResponder()
         
         if textView.text == reasonPlaceholder {
@@ -46,9 +49,7 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
         textView.constraints.forEach { (constraint) in
             if estimatedSize.height > 70  && constraint.firstAttribute == .height {
                 constraint.constant = estimatedSize.height
-                
             }
-            
         }
     }
     
@@ -84,19 +85,3 @@ class AddTypingCell : MeTableViewCell, UITextViewDelegate {
     }
     
 }
-
-
-class AddResultCell : MeTableViewCell {
-    
-    @IBOutlet var label: MeLightLabel!
-    
-    func config(_ data: Sentiment?){
-        guard let data = data else {
-            label.text = "Try sending your today!"
-            return
-        }
-        label.text = String(describing: data)
-    }
-    
-}
-
