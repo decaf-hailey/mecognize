@@ -12,6 +12,10 @@ There are certain words commonly used by psychiatrists when suggesting solutions
 
 One such word is "**recognize**", which refers to recognizing oneself, discerning situations, and acknowledging one's emotions and interests.
 
+With this app, you can assess your emotional state and find small moments of comfort.  
+        Sometimes, simply recognizing your feelings can be a great first step.  
+        Take your time, check in with yourself often, and be kind to yourself. 💙  
+
 
 ### Features
 

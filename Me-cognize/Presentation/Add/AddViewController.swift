@@ -105,9 +105,7 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
 
     func updateSendingData(_ text : String){
         sendingData = text
-    
     }
-    
  
     func updateResultData(viewModel: Add.Send.ViewModel){
         resultData = viewModel.sentiment
@@ -120,9 +118,11 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         

@@ -42,6 +42,7 @@
 		D2A6493929B48CF9005FE296 /* RequestAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6493829B48CF9005FE296 /* RequestAnalyze.swift */; };
 		D2A6493B29B4968C005FE296 /* SerializeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6493A29B4968C005FE296 /* SerializeData.swift */; };
 		D2B834012A87A20600F20787 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B834002A87A20600F20787 /* LocalData.swift */; };
+		D2BD4D822D88E42500322E1E /* AddTypingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD4D812D88E42500322E1E /* AddTypingCell.swift */; };
 		D2C36A722AAF9E8C000F4F8E /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C36A6C2AAF9E8C000F4F8E /* AddPresenter.swift */; };
 		D2C36A732AAF9E8C000F4F8E /* AddWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C36A6D2AAF9E8C000F4F8E /* AddWorker.swift */; };
 		D2C36A742AAF9E8C000F4F8E /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C36A6E2AAF9E8C000F4F8E /* AddRouter.swift */; };
@@ -62,7 +63,7 @@
 		D2E622B429AA1341008033A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2E622B329AA1341008033A2 /* Assets.xcassets */; };
 		D2E622B729AA1341008033A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2E622B529AA1341008033A2 /* LaunchScreen.storyboard */; };
 		D2E9B01A2D7CCB3D00A6997C /* dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D2E9B0192D7CCB3D00A6997C /* dev.xcconfig */; };
-		D2EB34E729E28947009AE6C8 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB34E629E28947009AE6C8 /* Cells.swift */; };
+		D2EB34E729E28947009AE6C8 /* AddResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB34E629E28947009AE6C8 /* AddResultCell.swift */; };
 		D2FAEF3A2A6B99B300A12589 /* Util+DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FAEF392A6B99B300A12589 /* Util+DateConverter.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		D2A6493829B48CF9005FE296 /* RequestAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnalyze.swift; sourceTree = "<group>"; };
 		D2A6493A29B4968C005FE296 /* SerializeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializeData.swift; sourceTree = "<group>"; };
 		D2B834002A87A20600F20787 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		D2BD4D812D88E42500322E1E /* AddTypingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypingCell.swift; sourceTree = "<group>"; };
 		D2C36A6C2AAF9E8C000F4F8E /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
 		D2C36A6D2AAF9E8C000F4F8E /* AddWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorker.swift; sourceTree = "<group>"; };
 		D2C36A6E2AAF9E8C000F4F8E /* AddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouter.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		D2E622B629AA1341008033A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2E622B829AA1341008033A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2E9B0192D7CCB3D00A6997C /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
-		D2EB34E629E28947009AE6C8 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		D2EB34E629E28947009AE6C8 /* AddResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResultCell.swift; sourceTree = "<group>"; };
 		D2FAEF392A6B99B300A12589 /* Util+DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Util+DateConverter.swift"; sourceTree = "<group>"; };
 		FC0B9DCF80D1115615BFBFE7 /* Pods_Me_cognize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Me_cognize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -350,7 +352,7 @@
 		D2EB34E229E2884F009AE6C8 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				D2EB34E329E28858009AE6C8 /* Component */,
+				D2EB34E329E28858009AE6C8 /* Cell */,
 				D2C36A6C2AAF9E8C000F4F8E /* AddPresenter.swift */,
 				D2C36A6D2AAF9E8C000F4F8E /* AddWorker.swift */,
 				D2C36A6E2AAF9E8C000F4F8E /* AddRouter.swift */,
@@ -361,12 +363,13 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
-		D2EB34E329E28858009AE6C8 /* Component */ = {
+		D2EB34E329E28858009AE6C8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D2EB34E629E28947009AE6C8 /* Cells.swift */,
+				D2BD4D812D88E42500322E1E /* AddTypingCell.swift */,
+				D2EB34E629E28947009AE6C8 /* AddResultCell.swift */,
 			);
-			path = Component;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,7 +522,7 @@
 				D265048529D81998005F6266 /* MeLabel.swift in Sources */,
 				D2C36A742AAF9E8C000F4F8E /* AddRouter.swift in Sources */,
 				D2B834012A87A20600F20787 /* LocalData.swift in Sources */,
-				D2EB34E729E28947009AE6C8 /* Cells.swift in Sources */,
+				D2EB34E729E28947009AE6C8 /* AddResultCell.swift in Sources */,
 				D2867B3929ABA6470006D9C5 /* ResponseSentiment.swift in Sources */,
 				D23F31F42A9E1DBD009260C2 /* HistoryRouter.swift in Sources */,
 				D2FAEF3A2A6B99B300A12589 /* Util+DateConverter.swift in Sources */,
@@ -528,6 +531,7 @@
 				D25F38102A5AC5E500D908E9 /* HistoryCell.swift in Sources */,
 				D2C36A762AAF9E8C000F4F8E /* AddViewController.swift in Sources */,
 				D2E0705F2A5A6B7500D3308B /* Util+UI.swift in Sources */,
+				D2BD4D822D88E42500322E1E /* AddTypingCell.swift in Sources */,
 				D2E622AA29AA1340008033A2 /* SceneDelegate.swift in Sources */,
 				D2A6493929B48CF9005FE296 /* RequestAnalyze.swift in Sources */,
 				D23F31EA2A9E1A39009260C2 /* HistoryViewController.swift in Sources */,
@@ -699,7 +703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hailey.Me-cognize";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -734,7 +738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hailey.Me-cognize";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

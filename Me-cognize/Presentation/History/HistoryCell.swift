@@ -32,19 +32,17 @@ class HistoryCell: MeTableViewCell {
             createGauges()
         }
     }
-    
 }
 
 
 extension HistoryCell {
     
     
-    
-    func setGauge(score: CGFloat) {
+    fileprivate func setGauge(score: CGFloat) {
         gaugeValue = CGFloat(score) / 2
     }
     
-    func createGauges() {
+    fileprivate func createGauges() {
         
         if gaugeBackLayer.superlayer != nil {
             gaugeBackLayer.removeFromSuperlayer()
@@ -64,7 +62,7 @@ extension HistoryCell {
     }
     
     
-    func createGaugeLayer(back: Bool) -> CAShapeLayer {
+    fileprivate func createGaugeLayer(back: Bool) -> CAShapeLayer {
         let barColor = gaugeValue < 0 ? UIColor.red : UIColor.blue
         let half = gaugeWidth/2
 
