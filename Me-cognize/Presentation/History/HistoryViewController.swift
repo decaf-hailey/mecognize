@@ -43,8 +43,10 @@ class historyviewController: UITableViewController, HistoryDisplayLogic {
     
     func displayList(viewModel: HistoryModel.List.ViewModel) {
         historyList = viewModel.historyList
-        DispatchQueue.main.async {[weak self] in
-            self?.tableView.reloadData()
+        Task {
+            await MainActor.run { [weak self] in
+                self?.tableView.reloadData()
+            }
         }
     }
     

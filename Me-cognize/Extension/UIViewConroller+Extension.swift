@@ -11,35 +11,49 @@ import UIKit
 extension UIViewController {
     
     func showAlert(_ message:String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        DispatchQueue.main.async { [weak self] in
-            self?.present(alert, animated: true, completion: nil)
+        Task {
+            await MainActor.run { [weak self] in
+                let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: nil))
+                self?.view.endEditing(true)
+                self?.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
-    @MainActor
+    
     func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-//        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        Task{
+            await MainActor.run {
+                let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        //        tap.cancelsTouchesInView = false
+                view.addGestureRecognizer(tap)
+            }
+        }
     }
     
-    @MainActor
     @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    @MainActor
-    func preventDoubleTap(){
-//                UIView.appearance().isExclusiveTouch = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
+        Task{
+            await MainActor.run {
+                view.endEditing(true)
+            }
+        }
     }
     
     @objc func doubleTapped() {
         //prevent from abusing double tap
     }
+    
+    func preventDoubleTap(){
+        Task{
+            await MainActor.run {
+                //                UIView.appearance().isExclusiveTouch = true
+                        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+                        tap.numberOfTapsRequired = 2
+                        view.addGestureRecognizer(tap)
+            }
+        }
+    }
+    
 }
 

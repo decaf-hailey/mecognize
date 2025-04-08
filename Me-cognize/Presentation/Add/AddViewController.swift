@@ -32,16 +32,20 @@ class AddViewController: UIViewController, AddDisplayLogic, UITableViewDelegate,
     
     var sendingData: String = ""{
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.beginUpdates()
-                self?.tableView.endUpdates()
+            Task {
+               await MainActor.run { [weak self] in
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                }
             }
         }
     }
     var resultData: Sentiment? {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
+            Task {
+                await MainActor.run {[weak self] in
+                    self?.tableView.reloadData()
+                }
             }
         }
     }

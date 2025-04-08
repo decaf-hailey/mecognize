@@ -10,80 +10,133 @@ import UIKit
 
 extension Util {
     enum UI {
+         
+        @MainActor
         static func getKeyRootView() -> UIViewController? {
-                let key = UIApplication.shared.connectedScenes
-                    .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
-                    .map({$0 as? UIWindowScene})
-                    .compactMap({$0})
-                    .first?.windows
-                    .filter({$0.isKeyWindow}).first
-                return key?.rootViewController
+            let key = UIApplication.shared.connectedScenes
+                .filter(
+                    {$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive
+                    })
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+            return key?.rootViewController
         }
         
-        static func getKeyWindow(_ callback: @escaping (UIWindow?)->()) { //mainthread에서 실행할 것!
-            DispatchQueue.main.async {
+        static func getKeyWindow() async -> UIWindow? {
+            
+            //mainthread에서 실행할 것!
+            return await MainActor.run(resultType: UIWindow?.self) {
                 let key = UIApplication.shared.connectedScenes
-                    .filter({$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive})
+                    .filter(
+                        {$0.activationState == .foregroundActive || $0.activationState == .foregroundInactive
+                        })
                     .map({$0 as? UIWindowScene})
                     .compactMap({$0})
                     .first?.windows
                     .filter({$0.isKeyWindow}).first
-                callback(key)
+                return key
             }
+                    
         }
         
-        static func presentFullOpacitySheet(_ nextView: UIViewController, completion: (() -> Void)? = nil){
+        static func presentFullOpacitySheet(
+            _ nextView: UIViewController,
+            completion: (() -> Void)? = nil
+        ) {
+            
             nextView.view.backgroundColor = .clear
             nextView.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-            DispatchQueue.main.async {
-                Util.UI.getKeyRootView()?.present(nextView, animated: false, completion: completion)
+            
+            Task { @MainActor in
+                Util.UI
+                    .getKeyRootView()?
+                    .present(nextView, animated: false, completion: completion)
             }
+            
         }
         
-        static func presentFullScreen(_ nextView: UIViewController, completion: (() -> Void)? = nil) {
+        static func presentFullScreen(
+            _ nextView: UIViewController,
+            completion: (() -> Void)? = nil
+        ) {
             nextView.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                Util.UI.getKeyRootView()?.present(nextView, animated: false, completion: completion)
+            Task { @MainActor in
+                Util.UI
+                    .getKeyRootView()?
+                    .present(nextView, animated: false, completion: completion)
             }
         }
-        static func presentFullScreen(animated:Bool, _ nextView: UIViewController, completion: (() -> Void)? = nil) {
+        static func presentFullScreen(
+            animated:Bool,
+            _ nextView: UIViewController,
+            completion: (() -> Void)? = nil
+        ) {
             nextView.modalPresentationStyle = .fullScreen
-            DispatchQueue.main.async {
-                Util.UI.getKeyRootView()?.present(nextView, animated: animated, completion: completion)
+            Task { @MainActor in
+                Util.UI
+                    .getKeyRootView()?
+                    .present(nextView, animated: false, completion: completion)
             }
         }
-        static func pushScreen(_ nextView: UIViewController?, animated : Bool = true){
+        static func pushScreen(
+            _ nextView: UIViewController?,
+            animated : Bool = true
+        ){
             guard let _nextView = nextView else {
                 return
             }
-            DispatchQueue.main.async {
-                Util.UI.getKeyRootView()?.navigationController?.pushViewController(_nextView, animated: animated)
+            
+            Task { @MainActor in
+                Util.UI
+                    .getKeyRootView()?.navigationController?
+                    .pushViewController(_nextView, animated: animated)
             }
         }
         static func getViewControllerInStotyBoard<T: UIViewController>(story:String, controller: T.Type) -> T {
             let storyboard = UIStoryboard.init(name: story, bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: String(describing: T.reuseIdentifier)) as! T
+            return storyboard
+                .instantiateViewController(
+                    withIdentifier: String(describing: T.reuseIdentifier)
+                ) as! T
         }
         
-        static func makeKeyAndVisible(_ vc: UIViewController?, _ appdelegateWindow: UIWindow? = nil) {
+        static func getNavigationControllerInStotyBoard(story:String, id: String) -> UINavigationController {
+            let storyboard = UIStoryboard.init(name: story, bundle: nil)
+            return storyboard
+                .instantiateViewController(
+                    withIdentifier: id
+                ) as! UINavigationController
+        }
+        
+        static func makeKeyAndVisible(
+            _ vc: UIViewController?,
+            _ appdelegateWindow: UIWindow? = nil
+        ) {
             if let scene = UIApplication.shared.connectedScenes
                 .first(where: { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive
                 }).map({$0 as? UIWindowScene}) {
                 
-                if let window = scene?.windows.first(where: { $0.isKeyWindow }) {
+                if let window = scene?.windows.first(
+                    where: { $0.isKeyWindow
+                    }) {
                     window.rootViewController = vc
                     window.makeKeyAndVisible()
                     return
                 }
                 
-                Util.Print.PrintLight(printType: .systemError("fail to find key window"))
+                Util.Print
+                    .PrintLight(
+                        printType: .systemError("fail to find key window")
+                    )
             }
         }
         
+        @MainActor
         static func hideKeyboard() {
-            DispatchQueue.main.async {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
+                UIApplication.shared
+                    .sendAction(#selector(UIResponder.resignFirstResponder),to: nil,from: nil, for: nil)
         }
     }
 }
